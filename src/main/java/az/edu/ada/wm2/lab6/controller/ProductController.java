@@ -21,39 +21,39 @@ public class ProductController {
     }
 
     @PostMapping
-    public ProductResponseDto createProduct(@RequestBody ProductRequestDto product) {
-        return productService.createProduct(product);
+    public ProductResponseDto create(@RequestBody ProductRequestDto dto) {
+        return productService.createProduct(dto);
     }
 
     @GetMapping("/{id}")
-    public ProductResponseDto getProductById(@PathVariable UUID id) {
+    public ProductResponseDto getById(@PathVariable UUID id) {
         return productService.getProductById(id);
     }
 
     @GetMapping
-    public List<ProductResponseDto> getAllProducts() {
+    public List<ProductResponseDto> getAll() {
         return productService.getAllProducts();
     }
 
     @PutMapping("/{id}")
-    public ProductResponseDto updateProduct(@PathVariable UUID id,
-                                            @RequestBody ProductRequestDto product) {
-        return productService.updateProduct(id, product);
+    public ProductResponseDto update(@PathVariable UUID id,
+                                     @RequestBody ProductRequestDto dto) {
+        return productService.updateProduct(id, dto);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable UUID id) {
+    public void delete(@PathVariable UUID id) {
         productService.deleteProduct(id);
     }
 
     @GetMapping("/expiring")
-    public List<ProductResponseDto> getProductsExpiringBefore(@RequestParam LocalDate date) {
+    public List<ProductResponseDto> getExpiring(@RequestParam LocalDate date) {
         return productService.getProductsExpiringBefore(date);
     }
 
-    @GetMapping("/price-range")
-    public List<ProductResponseDto> getProductsByPriceRange(@RequestParam BigDecimal minPrice,
-                                                            @RequestParam BigDecimal maxPrice) {
-        return productService.getProductsByPriceRange(minPrice, maxPrice);
+    @GetMapping("/price")
+    public List<ProductResponseDto> getByPrice(@RequestParam BigDecimal min,
+                                               @RequestParam BigDecimal max) {
+        return productService.getProductsByPriceRange(min, max);
     }
 }
