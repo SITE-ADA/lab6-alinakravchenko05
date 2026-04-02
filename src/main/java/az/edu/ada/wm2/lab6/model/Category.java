@@ -8,8 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -26,5 +26,5 @@ public class Category {
 
     @ManyToMany(mappedBy = "categories")
     @Builder.Default
-    private Set<Product> products = new HashSet<>();
+    private List<Product> products = new LinkedList<>();
 }
