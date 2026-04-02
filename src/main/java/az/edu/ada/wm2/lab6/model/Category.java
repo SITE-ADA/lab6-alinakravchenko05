@@ -1,6 +1,7 @@
 package az.edu.ada.wm2.lab6.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
@@ -20,6 +21,7 @@ import java.util.UUID;
 public class Category {
 
     @Id
+    @GeneratedValue
     private UUID id;
 
     private String name;

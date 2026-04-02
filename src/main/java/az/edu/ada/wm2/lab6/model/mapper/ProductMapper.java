@@ -7,6 +7,7 @@ import az.edu.ada.wm2.lab6.model.dto.ProductResponseDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
@@ -20,8 +21,10 @@ public interface ProductMapper {
     Product toEntity(ProductRequestDto dto);
 
     default List<String> mapCategoriesToNames(List<Category> categories) {
-        return categories.stream()
-                .map(Category::getName)
-                .toList();
+        return new LinkedList<>(
+                categories.stream()
+                        .map(Category::getName)
+                        .toList()
+        );
     }
 }
